@@ -12,7 +12,6 @@ linter:
     # prefer_double_quotes: true
 
     # Good packages document everything
-    public_member_api_docs: true
 
     # Blindly follow the Flutter code style, which prefers types everywhere
     # always_specify_types: true
@@ -25,3 +24,7 @@ linter:
 
     # Util classes are awesome!
     avoid_classes_with_only_static_members: false
+
+    non_constant_identifier_names: false
+
+    public_member_api_docs: false
