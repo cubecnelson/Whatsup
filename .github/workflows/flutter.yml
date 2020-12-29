@@ -22,13 +22,6 @@ jobs:
       - run: flutter pub get
       - run: flutter test
       - run: flutter build apk
-      - name: upload Android Apk to App Center
-        uses: wzieba/App-Center-action@v1.0.0
-        with:
-          appName: wzieba/Sample-App
-          token: ${{secrets.APP_CENTER_APP_TOKEN}}
-          group: Testers
-          file: /Users/runner/work/Whatsup/Whatsup/build/app/outputs/flutter-apk/app-release.apk
       - name: "Set Build Number to iOS App"
         run: cd ios && agvtool new-version -all ${{ github.run_number }}
       - uses: yukiarrr/ios-build-action@v1.3.1
