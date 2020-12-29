@@ -1,9 +1,12 @@
+import 'package:Whatsup/models/counter/counter_model.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'pages/home/home_page.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(
+      ChangeNotifierProvider(create: (_) => CounterModel(0), child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
