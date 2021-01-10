@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "976058567631",
+    "project_id": "whatsup-df98f",
+    "storage_bucket": "whatsup-df98f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:976058567631:android:5089b32f78d2faf655e0ba",
+        "android_client_info": {
+          "package_name": "com.fleetoday.Whatsup"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "976058567631-ohuelvk4u41mhki2i6o78jl2p9ukks1n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBiCmGQmDsh0lEY2umESj3yxWRh_6EA7Uk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "976058567631-ohuelvk4u41mhki2i6o78jl2p9ukks1n.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "976058567631-uhk44oshg52gsfsf6726g5gpfl4nk66f.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.fleetoday.whatsup"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
