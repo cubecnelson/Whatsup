@@ -1,4 +1,5 @@
 import 'package:Whatsup/models/counter/counter_model.dart';
+import 'package:Whatsup/service/firebase/auth/auth.dart';
 import 'package:Whatsup/service/firebase/firebase_init.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -23,8 +24,15 @@ class MyApp extends StatelessWidget {
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
         home: FirebaseInit(
-          child: ChangeNotifierProvider(
-            create: (_) => CounterModel(0),
+          child: MultiProvider(
+            providers: [
+              StreamProvider(
+                create: (_) => Authenication.userStateChanges(),
+              ),
+              ChangeNotifierProvider(
+                create: (_) => CounterModel(0),
+              )
+            ],
             builder: (context, widget) {
               return HomePage(
                   context: context, title: 'Flutter Demo Home Page');
