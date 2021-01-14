@@ -13,27 +13,51 @@ final NeumorDecorationMap = {
       BoxShadow(
           color: Colors.white, offset: Offset(-4.0, -4.0), blurRadius: 8.0)
     ],
-  )
+  ),
+  NeumorVariation.concave: BoxDecoration(
+    color: AppColors.background,
+    gradient: LinearGradient(
+      begin: Alignment.topCenter,
+      end: Alignment.bottomCenter,
+      colors: [
+        Colors.black12.withOpacity(0.1),
+        AppColors.background.withOpacity(0.1),
+        AppColors.background.withOpacity(0.5),
+        AppColors.background.withOpacity(0.5),
+        Colors.white.withOpacity(0.3),
+        Colors.white.withOpacity(0.8)
+      ],
+    ),
+    boxShadow: [
+      const BoxShadow(
+          color: Colors.black12, offset: Offset(1.0, 1.0), blurRadius: 2.0),
+      const BoxShadow(
+          color: Colors.white10, offset: Offset(-1.0, -1.0), blurRadius: 2.0)
+    ],
+  ),
 };
 
 @swidget
 Widget NeumorContainer({
+  EdgeInsetsGeometry padding,
+  EdgeInsetsGeometry margin,
   NeumorVariation variation = NeumorVariation.flat,
   BoxDecoration decoration,
   Widget child,
 }) {
-  final finalizedDecoration =
-      NeumorDecorationMap[NeumorVariation.flat].copyWith(
-    color: decoration.color,
-    image: decoration.image,
-    border: decoration.border,
-    borderRadius: decoration.borderRadius,
-    boxShadow: decoration.boxShadow,
-    gradient: decoration.gradient,
-    backgroundBlendMode: decoration.backgroundBlendMode,
-    shape: decoration.shape,
+  final finalizedDecoration = NeumorDecorationMap[variation].copyWith(
+    color: decoration?.color,
+    image: decoration?.image,
+    border: decoration?.border,
+    borderRadius: decoration?.borderRadius,
+    boxShadow: decoration?.boxShadow,
+    gradient: decoration?.gradient,
+    backgroundBlendMode: decoration?.backgroundBlendMode,
+    shape: decoration?.shape,
   );
   return Container(
+    margin: margin,
+    padding: padding,
     decoration: finalizedDecoration,
     child: child,
   );
