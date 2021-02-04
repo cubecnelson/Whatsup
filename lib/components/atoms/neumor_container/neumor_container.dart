@@ -28,10 +28,10 @@ final NeumorDecorationMap = {
         Colors.white.withOpacity(0.8)
       ],
     ),
-    boxShadow: [
-      const BoxShadow(
+    boxShadow: const [
+      BoxShadow(
           color: Colors.black12, offset: Offset(1.0, 1.0), blurRadius: 2.0),
-      const BoxShadow(
+      BoxShadow(
           color: Colors.white10, offset: Offset(-1.0, -1.0), blurRadius: 2.0)
     ],
   ),
