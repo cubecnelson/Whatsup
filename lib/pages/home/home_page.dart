@@ -1,4 +1,4 @@
-import 'package:Whatsup/components/atom/button/button.dart';
+import 'package:Whatsup/components/molecules/button/button.dart';
 import 'package:Whatsup/constants/colors/app_colors.dart';
 import 'package:Whatsup/models/counter/counter_model.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +20,7 @@ Widget HomePage({BuildContext context, String title}) {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
-                Button(
+                AppButton(
                   context: context,
                   label: '${counterModel.counter}',
                   onPressed: () {

@@ -1,4 +1,4 @@
-import 'package:Whatsup/components/atom/neumor_container/neumor_container.dart';
+import 'package:Whatsup/components/atoms/neumor_container/neumor_container.dart';
 import 'package:Whatsup/constants/colors/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:functional_widget_annotation/functional_widget_annotation.dart';
@@ -38,25 +38,34 @@ class ButtonDecoration {
 enum ButtonVariation { filled, outline, alert }
 
 @swidget
-Widget Button({
+Widget AppButton({
   BuildContext context,
   ButtonVariation variation = ButtonVariation.filled,
+  Color color,
   String label,
+  Widget child,
   void Function() onPressed,
+  double width,
+  double height,
 }) {
   final ButtonDecoration buttonDecoration = decorMap[variation];
   final decoration = buttonDecoration.decoration;
   final style = buttonDecoration.style.merge(
       TextStyle(fontSize: Theme.of(context).textTheme.headline5.fontSize));
 
+  Widget buildContent() {
+    final labelContent = label != null ? Text(label, style: style) : null;
+    final content = child ?? labelContent;
+    return content;
+  }
+
   return Container(
-    decoration: decoration,
+    width: width,
+    height: height,
+    decoration: decoration.copyWith(color: color),
     child: FlatButton(
       onPressed: onPressed,
-      child: Text(
-        label,
-        style: style,
-      ),
+      child: buildContent(),
     ),
   );
 }

@@ -1,15 +1,15 @@
-import 'package:Whatsup/components/atom/neumor_container/neumor_container.dart';
+import 'package:Whatsup/components/atoms/neumor_container/neumor_container.dart';
 import 'package:Whatsup/constants/colors/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:functional_widget_annotation/functional_widget_annotation.dart';
 
 @swidget
 Widget AppTextfield({
-  String text,
-  Function(String) onChange,
-  BuildContext context,
-  String hintText,
   bool obscureText = false,
+  BuildContext context,
+  Function(String) onChange,
+  String text,
+  String hintText,
 }) {
   return NeumorContainer(
     decoration: const BoxDecoration(

@@ -1,10 +1,10 @@
+import 'package:Whatsup/constants/colors/app_colors.dart';
 import 'package:Whatsup/models/counter/counter_model.dart';
+import 'package:Whatsup/pages/login/login_page.dart';
 import 'package:Whatsup/service/firebase/auth/auth.dart';
 import 'package:Whatsup/service/firebase/firebase_init.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import 'pages/home/home_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(
-          primarySwatch: Colors.blue,
+          primaryColor: AppColors.primaryDark,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
         home: FirebaseInit(
@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
               )
             ],
             builder: (context, widget) {
-              return HomePage(
+              return LoginPage(
                   context: context, title: 'Flutter Demo Home Page');
             },
           ),
