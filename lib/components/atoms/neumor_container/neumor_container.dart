@@ -1,10 +1,17 @@
-import 'package:Whatsup/constants/colors/app_colors.dart';
+import 'package:whatsup/constants/colors/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:functional_widget_annotation/functional_widget_annotation.dart';
 
-enum NeumorVariation { flat, concave, convex, pressed }
+enum NeumorVariation { flat, concave, convex, pressed, shadow }
 
 final NeumorDecorationMap = {
+  NeumorVariation.shadow: const BoxDecoration(
+    color: AppColors.background,
+    boxShadow: [
+      BoxShadow(
+          color: Colors.black26, offset: Offset(4.0, 4.0), blurRadius: 8.0),
+    ],
+  ),
   NeumorVariation.flat: const BoxDecoration(
     color: AppColors.background,
     boxShadow: [
@@ -44,6 +51,8 @@ Widget NeumorContainer({
   NeumorVariation variation = NeumorVariation.flat,
   BoxDecoration decoration,
   Widget child,
+  double width,
+  double height,
 }) {
   final finalizedDecoration = NeumorDecorationMap[variation].copyWith(
     color: decoration?.color,
@@ -56,6 +65,8 @@ Widget NeumorContainer({
     shape: decoration?.shape,
   );
   return Container(
+    width: width,
+    height: height,
     margin: margin,
     padding: padding,
     decoration: finalizedDecoration,

@@ -1,5 +1,5 @@
-import 'package:Whatsup/components/atoms/neumor_container/neumor_container.dart';
-import 'package:Whatsup/constants/colors/app_colors.dart';
+import 'package:whatsup/components/atoms/neumor_container/neumor_container.dart';
+import 'package:whatsup/constants/colors/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:functional_widget_annotation/functional_widget_annotation.dart';
 
@@ -63,7 +63,7 @@ Widget AppButton({
     width: width,
     height: height,
     decoration: decoration.copyWith(color: color),
-    child: FlatButton(
+    child: TextButton(
       onPressed: onPressed,
       child: buildContent(),
     ),

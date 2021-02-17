@@ -8,7 +8,7 @@ linter:
     sort_constructors_first: true
 
     # The new tabs vs. spaces. Choose wisely
-    # prefer_single_quotes: true
+    prefer_single_quotes: true
     # prefer_double_quotes: true
 
     # Good packages document everything
@@ -28,3 +28,5 @@ linter:
     non_constant_identifier_names: false
 
     public_member_api_docs: false
+
+    must_be_immutable: false
