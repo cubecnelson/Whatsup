@@ -18,6 +18,31 @@
 	<string>$(FLUTTER_BUILD_NAME)</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string></string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+                <string>fb281692129990939</string>
+				<string>com.googleusercontent.apps.976058567631-uhk44oshg52gsfsf6726g5gpfl4nk66f</string>
+			</array>
+		</dict>
+	</array>
+    <key>FacebookAppID</key>
+    <string>281692129990939</string>
+    <key>FacebookDisplayName</key>
+    <string>Whatup</string>
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+      <string>fbapi</string>
+      <string>fb-messenger-share-api</string>
+      <string>fbauth2</string>
+      <string>fbshareextension</string>
+    </array>
 	<key>CFBundleVersion</key>
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
 	<key>LSRequiresIPhoneOS</key>

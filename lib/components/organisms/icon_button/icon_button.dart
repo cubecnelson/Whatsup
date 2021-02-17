@@ -1,5 +1,5 @@
-import 'package:Whatsup/components/molecules/button/button.dart';
-import 'package:Whatsup/components/organisms/icon_button/icon_list.dart';
+import 'package:whatsup/components/molecules/button/button.dart';
+import 'package:whatsup/components/organisms/icon_button/icon_list.dart';
 import 'package:flutter/material.dart';
 import 'package:functional_widget_annotation/functional_widget_annotation.dart';
 
