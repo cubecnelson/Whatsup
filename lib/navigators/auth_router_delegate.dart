@@ -1,8 +1,9 @@
 // ignore: file_names
-import 'package:whatsup/pages/home/home_page.dart';
+import 'package:whatsup/pages/home/wu_home_page.dart';
 import 'package:whatsup/pages/login/login_page.dart';
 import 'package:whatsup/pages/login/sms_verification_page.dart';
 import 'package:whatsup/pages/whatsup_nav_page.dart';
+import 'package:whatsup/viewmodels/home/wu_home_viewmodel.dart';
 import 'package:whatsup/viewmodels/login/login_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -25,7 +26,6 @@ class AppRouterDelegate extends RouterDelegate<LoginViewModel>
     return Navigator(
       onGenerateRoute: (_) => MaterialPageRoute(builder: (_) => Container()),
       key: navigatorKey,
-      observers: [HeroController()],
       pages: [
         if (loginViewModel.loginStatus != LoginStatus.authenicated)
           WhatsupNavigationPage(
@@ -35,7 +35,11 @@ class AppRouterDelegate extends RouterDelegate<LoginViewModel>
         if (loginViewModel.loginStatus == LoginStatus.authenicated)
           WhatsupNavigationPage(
             key: const ValueKey('HomePage'),
-            child: HomePage(),
+            child: ChangeNotifierProvider(create: (BuildContext context) {
+              return WUHomeViewModel();
+            }, builder: (BuildContext content, Widget widget) {
+              return WUHomePage();
+            }),
           ),
         if (loginViewModel.loginStatus == LoginStatus.smsVerification)
           WhatsupNavigationPage(
