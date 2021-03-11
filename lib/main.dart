@@ -28,27 +28,15 @@ class MyApp extends StatelessWidget {
           final AppRouteInformationParser _routeInformationParser =
               Provider.of<AppRouteInformationParser>(context);
           return MaterialApp.router(
-              theme: ThemeData(
-                primaryColor: AppColors.primaryDark,
-                visualDensity: VisualDensity.adaptivePlatformDensity,
-              ),
-              title: 'Whatsup',
-              routerDelegate: _routerDelegate,
-              routeInformationParser: _routeInformationParser,
-              routeInformationProvider: _platformRouteInformationProvider
-              // routes: {
-              //   '/login': (context) => LoginPage(),
-              //   '/sms': (context) => SmsVerificationPage(),
-              //   '/home': (context) => HomePage(),
-              // },
-              // title: 'Flutter Demo',
-              // theme: ThemeData(
-              //   primaryColor: AppColors.primaryDark,
-              //   visualDensity: VisualDensity.adaptivePlatformDensity,
-              // ),
-              // initialRoute: '/login',
-              // home:
-              );
+            theme: ThemeData(
+              primaryColor: AppColors.primaryDark,
+              visualDensity: VisualDensity.adaptivePlatformDensity,
+            ),
+            title: 'Whatsup',
+            routerDelegate: _routerDelegate,
+            routeInformationParser: _routeInformationParser,
+            routeInformationProvider: _platformRouteInformationProvider,
+          );
         },
       ),
     );
