@@ -22,18 +22,20 @@ environment:
 
 dependencies:
 
-  cloud_firestore: "^0.14.4"
+  cloud_firestore: ^0.14.4
   cupertino_icons: ^1.0.0
-  firebase_analytics: "^6.3.0"
-  firebase_auth: "^0.18.4+1"
-  firebase_core: "0.5.3"
+  firebase_analytics: ^6.3.0
+  firebase_auth: ^0.18.4+1
+  firebase_core: 0.5.3
   flutter:
     sdk: flutter
 
-  flutter_facebook_auth: "^1.0.0"
+  flutter_facebook_auth: ^1.0.0
   flutter_hooks: ^0.15.0
   functional_widget_annotation: ^0.8.0
-  google_sign_in: "^4.5.1"
+  google_sign_in: ^4.5.1
+  location: ^3.0.0
+  mapbox_gl: ^0.10.0
   provider: ^4.3.2+3
 
 dev_dependencies:

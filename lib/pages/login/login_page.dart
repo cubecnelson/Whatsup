@@ -5,7 +5,7 @@ import 'package:whatsup/components/atoms/neumor_container/neumor_container.dart'
 import 'package:whatsup/components/molecules/textfield/textfield.dart';
 import 'package:whatsup/components/organisms/icon_button/icon_button.dart';
 import 'package:whatsup/constants/colors/app_colors.dart';
-import 'package:whatsup/viewmodels/login/login_viewmodel.dart';
+import 'package:whatsup/viewmodels/login/app_login_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
@@ -15,18 +15,18 @@ class LoginPage extends StatelessWidget {
   String phoneNumber = '';
 
   void onPhoneLoginPressed(
-      {LoginViewModel loginViewModel, String phoneNumber}) {
+      {AppLoginViewModel loginViewModel, String phoneNumber}) {
     if (phoneNumber == null || phoneNumber.isEmpty) {
       return;
     }
     loginViewModel.signInWithPhoneNumber(phoneNumber);
   }
 
-  void onGoogleLoginPressed({LoginViewModel loginViewModel}) {
+  void onGoogleLoginPressed({AppLoginViewModel loginViewModel}) {
     loginViewModel.signInWithGoogle();
   }
 
-  void onFacebookLoginPressed({LoginViewModel loginViewModel}) {
+  void onFacebookLoginPressed({AppLoginViewModel loginViewModel}) {
     loginViewModel.signInWithFacebook();
   }
 
@@ -106,7 +106,8 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final LoginViewModel loginViewModel = Provider.of<LoginViewModel>(context);
+    final AppLoginViewModel loginViewModel =
+        Provider.of<AppLoginViewModel>(context);
     return Scaffold(
         backgroundColor: AppColors.background,
         body: Padding(

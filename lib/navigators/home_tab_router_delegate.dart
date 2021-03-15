@@ -1,51 +1,52 @@
-import 'package:whatsup/pages/events/wu_events_page.dart';
-import 'package:whatsup/pages/messages/wu_messages_page.dart';
-import 'package:whatsup/pages/nearby/wu_nearby_page.dart';
-import 'package:whatsup/pages/settings/wu_settings_page.dart';
+import 'package:whatsup/pages/events/app_events_page.dart';
+import 'package:whatsup/pages/messages/app_messages_page.dart';
+import 'package:whatsup/pages/nearby/app_nearby_page.dart';
+import 'package:whatsup/pages/settings/app_settings_page.dart';
 import 'package:whatsup/pages/whatsup_nav_page.dart';
-import 'package:whatsup/viewmodels/home/wu_home_viewmodel.dart';
+import 'package:whatsup/viewmodels/home/app_home_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class WUHomeTabRouteInformationParser
-    extends RouteInformationParser<WUHomeViewModel> {
-  WUHomeTabRouteInformationParser({@required this.homeViewModel});
-  WUHomeViewModel homeViewModel;
+class AppHomeTabRouteInformationParser
+    extends RouteInformationParser<AppHomeViewModel> {
+  AppHomeTabRouteInformationParser({@required this.homeViewModel});
+  AppHomeViewModel homeViewModel;
   @override
-  Future<WUHomeViewModel> parseRouteInformation(
+  Future<AppHomeViewModel> parseRouteInformation(
       RouteInformation routeInformation) async {
     return homeViewModel;
   }
 }
 
-class WUHomeTabRouterDelegate extends RouterDelegate<WUHomeViewModel>
-    with ChangeNotifier, PopNavigatorRouterDelegateMixin<WUHomeViewModel> {
+class WUHomeTabRouterDelegate extends RouterDelegate<AppHomeViewModel>
+    with ChangeNotifier, PopNavigatorRouterDelegateMixin<AppHomeViewModel> {
   @override
   Widget build(BuildContext context) {
-    final WUHomeViewModel homeViewModel = Provider.of<WUHomeViewModel>(context);
+    final AppHomeViewModel homeViewModel =
+        Provider.of<AppHomeViewModel>(context);
     return Navigator(
       onGenerateRoute: (_) => MaterialPageRoute(builder: (_) => Container()),
       key: navigatorKey,
       pages: [
-        if (homeViewModel.currentTabPageKey == WUHomeTabPageKey.nearby)
+        if (homeViewModel.currentTabPageKey == AppHomeTabPageKey.nearby)
           WhatsupNavigationPage(
             key: const ValueKey('NearbyPage'),
-            child: WUNearbyPage(),
+            child: AppNearbyPage(),
           ),
-        if (homeViewModel.currentTabPageKey == WUHomeTabPageKey.events)
+        if (homeViewModel.currentTabPageKey == AppHomeTabPageKey.events)
           WhatsupNavigationPage(
             key: const ValueKey('EventsPage'),
-            child: WUEventsPage(),
+            child: AppEventsPage(),
           ),
-        if (homeViewModel.currentTabPageKey == WUHomeTabPageKey.messages)
+        if (homeViewModel.currentTabPageKey == AppHomeTabPageKey.messages)
           WhatsupNavigationPage(
             key: const ValueKey('MessagesPage'),
-            child: WUMessagesPage(),
+            child: AppMessagesPage(),
           ),
-        if (homeViewModel.currentTabPageKey == WUHomeTabPageKey.settings)
+        if (homeViewModel.currentTabPageKey == AppHomeTabPageKey.settings)
           WhatsupNavigationPage(
             key: const ValueKey('SettingsPage'),
-            child: WUSettingsPage(),
+            child: AppSettingsPage(),
           ),
       ],
       onPopPage: (route, result) {
@@ -65,7 +66,7 @@ class WUHomeTabRouterDelegate extends RouterDelegate<WUHomeViewModel>
   GlobalKey<NavigatorState> get navigatorKey => GlobalKey<NavigatorState>();
 
   @override
-  Future<void> setNewRoutePath(WUHomeViewModel configuration) async {
+  Future<void> setNewRoutePath(AppHomeViewModel configuration) async {
     // ignore: avoid_returning_null_for_void
     return null;
   }

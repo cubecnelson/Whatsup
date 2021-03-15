@@ -376,6 +376,17 @@ PODS:
   - GTMSessionFetcher/Full (1.5.0):
     - GTMSessionFetcher/Core (= 1.5.0)
   - leveldb-library (1.22)
+  - location (0.0.1):
+    - Flutter
+  - Mapbox-iOS-SDK (5.6.1):
+    - MapboxMobileEvents (= 0.10.2)
+  - mapbox_gl (0.0.1):
+    - Flutter
+    - Mapbox-iOS-SDK (~> 5.6.0)
+    - MapboxAnnotationExtension (~> 0.0.1-beta.1)
+  - MapboxAnnotationExtension (0.0.1-beta.1):
+    - Mapbox-iOS-SDK (~> 5.2)
+  - MapboxMobileEvents (0.10.2)
   - nanopb (1.30906.0):
     - nanopb/decode (= 1.30906.0)
     - nanopb/encode (= 1.30906.0)
@@ -391,6 +402,8 @@ DEPENDENCIES:
   - Flutter (from `Flutter`)
   - flutter_facebook_auth (from `.symlinks/plugins/flutter_facebook_auth/ios`)
   - google_sign_in (from `.symlinks/plugins/google_sign_in/ios`)
+  - location (from `.symlinks/plugins/location/ios`)
+  - mapbox_gl (from `.symlinks/plugins/mapbox_gl/ios`)
 
 SPEC REPOS:
   trunk:
@@ -415,6 +428,9 @@ SPEC REPOS:
     - GTMAppAuth
     - GTMSessionFetcher
     - leveldb-library
+    - Mapbox-iOS-SDK
+    - MapboxAnnotationExtension
+    - MapboxMobileEvents
     - nanopb
     - PromisesObjC
 
@@ -433,6 +449,10 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/flutter_facebook_auth/ios"
   google_sign_in:
     :path: ".symlinks/plugins/google_sign_in/ios"
+  location:
+    :path: ".symlinks/plugins/location/ios"
+  mapbox_gl:
+    :path: ".symlinks/plugins/mapbox_gl/ios"
 
 SPEC CHECKSUMS:
   abseil: 6c8eb7892aefa08d929b39f9bb108e5367e3228f
@@ -463,6 +483,11 @@ SPEC CHECKSUMS:
   GTMAppAuth: 197a8dabfea5d665224aa00d17f164fc2248dab9
   GTMSessionFetcher: b3503b20a988c4e20cc189aa798fd18220133f52
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
+  location: 3a2eed4dd2fab25e7b7baf2a9efefe82b512d740
+  Mapbox-iOS-SDK: b31bd62a5dd5b7e688eab787acd3d093a122f4d6
+  mapbox_gl: 48d261b93d7dfc2367c2f93b493ea8f43df5ba96
+  MapboxAnnotationExtension: d66de5561562c9d940153c0135725e671407b781
+  MapboxMobileEvents: 2bc0ca2eedb627b73cf403258dce2b2fa98074a6
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
 

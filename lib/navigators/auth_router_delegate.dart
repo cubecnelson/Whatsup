@@ -1,47 +1,52 @@
 // ignore: file_names
-import 'package:whatsup/pages/home/wu_home_page.dart';
+import 'package:whatsup/pages/home/app_home_page.dart';
 import 'package:whatsup/pages/login/login_page.dart';
 import 'package:whatsup/pages/login/sms_verification_page.dart';
 import 'package:whatsup/pages/whatsup_nav_page.dart';
-import 'package:whatsup/viewmodels/home/wu_home_viewmodel.dart';
-import 'package:whatsup/viewmodels/login/login_viewmodel.dart';
+import 'package:whatsup/service/location/location_service.dart';
+import 'package:whatsup/viewmodels/home/app_home_viewmodel.dart';
+import 'package:whatsup/viewmodels/login/app_login_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class AppRouteInformationParser extends RouteInformationParser<LoginViewModel> {
+class AppRouteInformationParser
+    extends RouteInformationParser<AppLoginViewModel> {
   AppRouteInformationParser({@required this.loginViewModel});
-  LoginViewModel loginViewModel;
+  AppLoginViewModel loginViewModel;
   @override
-  Future<LoginViewModel> parseRouteInformation(
+  Future<AppLoginViewModel> parseRouteInformation(
       RouteInformation routeInformation) async {
     return loginViewModel;
   }
 }
 
-class AppRouterDelegate extends RouterDelegate<LoginViewModel>
-    with ChangeNotifier, PopNavigatorRouterDelegateMixin<LoginViewModel> {
+class AppRouterDelegate extends RouterDelegate<AppLoginViewModel>
+    with ChangeNotifier, PopNavigatorRouterDelegateMixin<AppLoginViewModel> {
   @override
   Widget build(BuildContext context) {
-    final LoginViewModel loginViewModel = Provider.of<LoginViewModel>(context);
+    final AppLoginViewModel loginViewModel =
+        Provider.of<AppLoginViewModel>(context);
+    final LocationService locationService =
+        Provider.of<LocationService>(context);
     return Navigator(
       onGenerateRoute: (_) => MaterialPageRoute(builder: (_) => Container()),
       key: navigatorKey,
       pages: [
-        if (loginViewModel.loginStatus != LoginStatus.authenicated)
+        if (loginViewModel.loginStatus != AppLoginStatus.authenicated)
           WhatsupNavigationPage(
             key: const ValueKey('LoginPage'),
             child: LoginPage(),
           ),
-        if (loginViewModel.loginStatus == LoginStatus.authenicated)
+        if (loginViewModel.loginStatus == AppLoginStatus.authenicated)
           WhatsupNavigationPage(
             key: const ValueKey('HomePage'),
             child: ChangeNotifierProvider(create: (BuildContext context) {
-              return WUHomeViewModel();
+              return AppHomeViewModel(locationService: locationService);
             }, builder: (BuildContext content, Widget widget) {
-              return WUHomePage();
+              return AppHomePage();
             }),
           ),
-        if (loginViewModel.loginStatus == LoginStatus.smsVerification)
+        if (loginViewModel.loginStatus == AppLoginStatus.smsVerification)
           WhatsupNavigationPage(
             key: const ValueKey('SmsVerificationPage'),
             child: SmsVerificationPage(),
@@ -64,7 +69,7 @@ class AppRouterDelegate extends RouterDelegate<LoginViewModel>
   GlobalKey<NavigatorState> get navigatorKey => GlobalKey<NavigatorState>();
 
   @override
-  Future<void> setNewRoutePath(LoginViewModel configuration) async {
+  Future<void> setNewRoutePath(AppLoginViewModel configuration) async {
     // ignore: avoid_returning_null_for_void
     return null;
   }

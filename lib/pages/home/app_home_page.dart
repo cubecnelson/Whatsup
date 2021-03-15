@@ -1,17 +1,17 @@
-import 'package:whatsup/components/atoms/wu_bottom_navigation_bar/wu_bottom_navigation_bar.dart';
+import 'package:whatsup/components/atoms/app_bottom_navigation_bar/app_bottom_navigation_bar.dart';
 import 'package:whatsup/components/organisms/icon_button/icon_list.dart';
 import 'package:whatsup/constants/colors/app_colors.dart';
 import 'package:whatsup/navigators/home_tab_router_delegate.dart';
-import 'package:whatsup/viewmodels/home/wu_home_viewmodel.dart';
+import 'package:whatsup/viewmodels/home/app_home_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 
 // ignore: must_be_immutable
-class WUHomePage extends StatelessWidget {
+class AppHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final WUHomeViewModel homeViewModel = Provider.of(context);
+    final AppHomeViewModel homeViewModel = Provider.of(context);
 
     final WUHomeTabRouterDelegate _routerDelegate = WUHomeTabRouterDelegate();
 
@@ -19,21 +19,21 @@ class WUHomePage extends StatelessWidget {
         PlatformRouteInformationProvider(
             initialRouteInformation: const RouteInformation(location: '/'));
     return Scaffold(
-      bottomNavigationBar: WUBottomNavigationBar(
-          items: <WUBottomNavigationItemDef>[
-            WUBottomNavigationItemDef(
+      bottomNavigationBar: AppBottomNavigationBar(
+          items: <AppBottomNavigationItemDef>[
+            AppBottomNavigationItemDef(
                 icon: 'nearby_home',
                 selectedIcon: 'nearby_home_selected',
                 label: 'Nearby'),
-            WUBottomNavigationItemDef(
+            AppBottomNavigationItemDef(
                 icon: 'events_home',
                 selectedIcon: 'events_home_selected',
                 label: 'Events'),
-            WUBottomNavigationItemDef(
+            AppBottomNavigationItemDef(
                 icon: 'messages_home',
                 selectedIcon: 'messages_home_selected',
                 label: 'Messages'),
-            WUBottomNavigationItemDef(
+            AppBottomNavigationItemDef(
                 icon: 'settings_home',
                 selectedIcon: 'settings_home_selected',
                 label: 'Settings')
@@ -70,7 +70,7 @@ class WUHomePage extends StatelessWidget {
         ),
         routerDelegate: _routerDelegate,
         routeInformationParser:
-            WUHomeTabRouteInformationParser(homeViewModel: homeViewModel),
+            AppHomeTabRouteInformationParser(homeViewModel: homeViewModel),
         routeInformationProvider: _platformRouteInformationProvider,
       ),
     );
