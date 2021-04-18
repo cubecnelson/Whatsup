@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-class WUMessagesPage extends StatelessWidget {
+class AppMessagesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

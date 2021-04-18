@@ -9,16 +9,16 @@ final NeumorDecorationMap = {
     color: AppColors.background,
     boxShadow: [
       BoxShadow(
-          color: Colors.black26, offset: Offset(4.0, 4.0), blurRadius: 8.0),
+          color: Colors.black45, offset: Offset(4.0, 4.0), blurRadius: 8.0),
     ],
   ),
   NeumorVariation.flat: const BoxDecoration(
     color: AppColors.background,
     boxShadow: [
       BoxShadow(
-          color: Colors.black26, offset: Offset(4.0, 4.0), blurRadius: 8.0),
+          color: Colors.black45, offset: Offset(4.0, 4.0), blurRadius: 8.0),
       BoxShadow(
-          color: Colors.white, offset: Offset(-4.0, -4.0), blurRadius: 8.0)
+          color: Colors.white60, offset: Offset(-4.0, -4.0), blurRadius: 8.0)
     ],
   ),
   NeumorVariation.concave: BoxDecoration(
@@ -31,8 +31,8 @@ final NeumorDecorationMap = {
         AppColors.background.withOpacity(0.1),
         AppColors.background.withOpacity(0.5),
         AppColors.background.withOpacity(0.5),
-        Colors.white.withOpacity(0.3),
-        Colors.white.withOpacity(0.8)
+        Colors.white60.withOpacity(0.3),
+        Colors.white60.withOpacity(0.8)
       ],
     ),
     boxShadow: const [
