@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class WhatsupNavigationPage extends Page {
+class AppNavigationPage extends Page {
   final Widget child;
 
   // ignore: sort_constructors_first
-  const WhatsupNavigationPage({@required this.child, LocalKey key})
+  const AppNavigationPage({required this.child, required LocalKey key})
       : super(key: key);
 
   @override

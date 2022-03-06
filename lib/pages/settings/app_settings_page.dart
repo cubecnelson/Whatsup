@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:whatsup/components/molecules/button/button.dart';
-import 'package:whatsup/viewmodels/login/login_viewmodel.dart';
+import 'package:whatsup/viewmodels/login/app_login_viewmodel.dart';
 
 // ignore: must_be_immutable
-class WUSettingsPage extends StatelessWidget {
+class AppSettingsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final LoginViewModel loginViewModel = Provider.of<LoginViewModel>(context);
+    final AppLoginViewModel loginViewModel =
+        Provider.of<AppLoginViewModel>(context);
     return Scaffold(
         backgroundColor: Colors.blue,
         body: Container(
@@ -26,8 +26,8 @@ class WUSettingsPage extends StatelessWidget {
                           () async {
                         await loginViewModel.signOut();
                       });
-                    })
-              ]),
-        ));
+                    },)
+              ],),
+        ),);
   }
 }
