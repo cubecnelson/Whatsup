@@ -1,4 +1,4 @@
-name: Flutter
+name: Flutter Android
 
 on:
   push:
@@ -22,25 +22,25 @@ jobs:
       - run: flutter pub get
       - run: flutter test
       - run: flutter build apk
-      - name: "Set Build Number to iOS App"
-        run: cd ios && agvtool new-version -all ${{ github.run_number }}
-      - name: "Update Fastlane"
-        run: sudo gem install fastlane
-      - name: "Pod install"
-        run: cd ios && pod install
-      - uses: yukiarrr/ios-build-action@v1.3.1
-        with:
-          p12-key-base64: ${{ secrets.P12 }}
-          p12-cer-base64: ${{ secrets.CER }}
-          mobileprovision-base64: ${{ secrets.PROVISIONING_PROFILE }}
-          code-signing-identity: ${{ secrets.CODE_SIGNING_IDENTITY }}
-          workspace-path: "ios/Runner.xcworkspace"
-          project-path: "ios/Runner.xcodeproj"
-          team-id: ${{ secrets.TEAM_ID }}
-      - name: "Upload app to TestFlight"
-        uses: apple-actions/upload-testflight-build@v1
-        with:
-          app-path: "/Users/runner/work/Whatsup/Whatsup/output.ipa"
-          issuer-id: ${{ secrets.APPSTORE_ISSUER_ID }}
-          api-key-id: ${{ secrets.APPSTORE_KEY_ID }}
-          api-private-key: ${{ secrets.APPSTORE_PRIVATE_KEY }}
+      # - name: "Set Build Number to iOS App"
+      #   run: cd ios && agvtool new-version -all ${{ github.run_number }}
+      # - name: "Update Fastlane"
+      #   run: sudo gem install fastlane
+      # - name: "Pod install"
+      #   run: cd ios && pod install
+      # - uses: yukiarrr/ios-build-action@v1.3.1
+      #   with:
+      #     p12-key-base64: ${{ secrets.P12 }}
+      #     p12-cer-base64: ${{ secrets.CER }}
+      #     mobileprovision-base64: ${{ secrets.PROVISIONING_PROFILE }}
+      #     code-signing-identity: ${{ secrets.CODE_SIGNING_IDENTITY }}
+      #     workspace-path: "ios/Runner.xcworkspace"
+      #     project-path: "ios/Runner.xcodeproj"
+      #     team-id: ${{ secrets.TEAM_ID }}
+      # - name: "Upload app to TestFlight"
+      #   uses: apple-actions/upload-testflight-build@v1
+      #   with:
+      #     app-path: "/Users/runner/work/Whatsup/Whatsup/output.ipa"
+      #     issuer-id: ${{ secrets.APPSTORE_ISSUER_ID }}
+      #     api-key-id: ${{ secrets.APPSTORE_KEY_ID }}
+      #     api-private-key: ${{ secrets.APPSTORE_PRIVATE_KEY }}
