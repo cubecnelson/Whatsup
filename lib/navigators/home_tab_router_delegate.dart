@@ -1,15 +1,15 @@
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:whatsup/pages/events/app_events_page.dart';
 import 'package:whatsup/pages/messages/app_messages_page.dart';
 import 'package:whatsup/pages/nearby/app_nearby_page.dart';
 import 'package:whatsup/pages/settings/app_settings_page.dart';
-import 'package:whatsup/pages/whatsup_nav_page.dart';
+import 'package:whatsup/pages/app_nav_page.dart';
 import 'package:whatsup/viewmodels/home/app_home_viewmodel.dart';
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class AppHomeTabRouteInformationParser
     extends RouteInformationParser<AppHomeViewModel> {
-  AppHomeTabRouteInformationParser({@required this.homeViewModel});
+  AppHomeTabRouteInformationParser({required this.homeViewModel});
   AppHomeViewModel homeViewModel;
   @override
   Future<AppHomeViewModel> parseRouteInformation(
@@ -29,22 +29,22 @@ class WUHomeTabRouterDelegate extends RouterDelegate<AppHomeViewModel>
       key: navigatorKey,
       pages: [
         if (homeViewModel.currentTabPageKey == AppHomeTabPageKey.nearby)
-          WhatsupNavigationPage(
+          AppNavigationPage(
             key: const ValueKey('NearbyPage'),
             child: AppNearbyPage(),
           ),
         if (homeViewModel.currentTabPageKey == AppHomeTabPageKey.events)
-          WhatsupNavigationPage(
+          AppNavigationPage(
             key: const ValueKey('EventsPage'),
             child: AppEventsPage(),
           ),
         if (homeViewModel.currentTabPageKey == AppHomeTabPageKey.messages)
-          WhatsupNavigationPage(
+          AppNavigationPage(
             key: const ValueKey('MessagesPage'),
             child: AppMessagesPage(),
           ),
         if (homeViewModel.currentTabPageKey == AppHomeTabPageKey.settings)
-          WhatsupNavigationPage(
+          AppNavigationPage(
             key: const ValueKey('SettingsPage'),
             child: AppSettingsPage(),
           ),

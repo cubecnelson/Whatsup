@@ -1,6 +1,10 @@
 class UserModel {
   UserModel(
-      {this.id, this.firstName, this.lastName, this.email, this.phoneNumber});
+      {required this.id,
+      required this.firstName,
+      required this.lastName,
+      required this.email,
+      required this.phoneNumber});
   String id;
   String firstName;
   String lastName;

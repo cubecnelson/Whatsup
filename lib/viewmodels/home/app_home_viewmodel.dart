@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:location/location.dart';
-import 'package:mapbox_gl/mapbox_gl.dart';
 import 'package:whatsup/service/location/location_service.dart';
 
 enum AppHomeTabPageKey { nearby, events, messages, settings }
@@ -13,13 +12,13 @@ const List<AppHomeTabPageKey> homeTabPagesList = [
 ];
 
 class AppHomeViewModel extends ChangeNotifier {
-  AppHomeViewModel({@required LocationService locationService}) {
+  AppHomeViewModel({required LocationService locationService}) {
     _locationService = locationService;
     subscribeToLocationChangesFromLocationService();
   }
 
-  LocationService _locationService;
-  LatLng currentLatLng;
+  late LocationService _locationService;
+  // late LatLng currentLatLng;
 
   AppHomeTabPageKey currentTabPageKey = AppHomeTabPageKey.nearby;
   int _currentIndex = 0;
@@ -42,14 +41,12 @@ class AppHomeViewModel extends ChangeNotifier {
   void subscribeToLocationChangesFromLocationService() async {
     final LocationData locationData =
         await _locationService.getRealTimeLocation();
-    currentLatLng = LatLng(locationData.latitude, locationData.longitude);
+    // currentLatLng = LatLng(locationData.latitude!, locationData.longitude!);
     notifyListeners();
     _locationService.locationChanges().listen((newLocationData) {
-      if (newLocationData != null) {
-        currentLatLng =
-            LatLng(newLocationData.latitude, newLocationData.longitude);
-        notifyListeners();
-      }
+      // currentLatLng =
+      //     LatLng(newLocationData.latitude!, newLocationData.longitude!);
+      notifyListeners();
     });
   }
 }

@@ -18,14 +18,14 @@ final LatLngBounds sydneyBounds = LatLngBounds(
 
 // ignore: must_be_immutable
 class AppMapView extends StatefulWidget {
-  LatLng latLng;
+  late LatLng latLng;
 
   @override
   State createState() => AppMapViewState();
 }
 
 class AppMapViewState extends State<AppMapView> {
-  MapboxMapController mapController;
+  late MapboxMapController mapController;
 
   // ignore: use_setters_to_change_properties
   void _onMapCreated(MapboxMapController controller) {
@@ -42,7 +42,9 @@ class AppMapViewState extends State<AppMapView> {
       myLocationTrackingMode: MyLocationTrackingMode.Tracking,
       myLocationRenderMode: MyLocationRenderMode.NORMAL,
       initialCameraPosition: const CameraPosition(
-          target: LatLng(22.2887427, 114.2184066), zoom: 15.0),
+        target: LatLng(22.2887427, 114.2184066),
+        zoom: 15.0,
+      ),
       onStyleLoadedCallback: onStyleLoadedCallback,
     );
   }

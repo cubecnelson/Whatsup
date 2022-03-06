@@ -1,17 +1,17 @@
 // ignore: file_names
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:whatsup/pages/home/app_home_page.dart';
 import 'package:whatsup/pages/login/login_page.dart';
 import 'package:whatsup/pages/login/sms_verification_page.dart';
-import 'package:whatsup/pages/whatsup_nav_page.dart';
+import 'package:whatsup/pages/app_nav_page.dart';
 import 'package:whatsup/service/location/location_service.dart';
 import 'package:whatsup/viewmodels/home/app_home_viewmodel.dart';
 import 'package:whatsup/viewmodels/login/app_login_viewmodel.dart';
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class AppRouteInformationParser
     extends RouteInformationParser<AppLoginViewModel> {
-  AppRouteInformationParser({@required this.loginViewModel});
+  AppRouteInformationParser({required this.loginViewModel});
   AppLoginViewModel loginViewModel;
   @override
   Future<AppLoginViewModel> parseRouteInformation(
@@ -33,21 +33,24 @@ class AppRouterDelegate extends RouterDelegate<AppLoginViewModel>
       key: navigatorKey,
       pages: [
         if (loginViewModel.loginStatus != AppLoginStatus.authenicated)
-          WhatsupNavigationPage(
+          AppNavigationPage(
             key: const ValueKey('LoginPage'),
             child: LoginPage(),
           ),
         if (loginViewModel.loginStatus == AppLoginStatus.authenicated)
-          WhatsupNavigationPage(
+          AppNavigationPage(
             key: const ValueKey('HomePage'),
-            child: ChangeNotifierProvider(create: (BuildContext context) {
-              return AppHomeViewModel(locationService: locationService);
-            }, builder: (BuildContext content, Widget widget) {
-              return AppHomePage();
-            }),
+            child: ChangeNotifierProvider(
+              create: (BuildContext context) {
+                return AppHomeViewModel(locationService: locationService);
+              },
+              builder: (BuildContext content, Widget? widget) {
+                return AppHomePage();
+              },
+            ),
           ),
         if (loginViewModel.loginStatus == AppLoginStatus.smsVerification)
-          WhatsupNavigationPage(
+          AppNavigationPage(
             key: const ValueKey('SmsVerificationPage'),
             child: SmsVerificationPage(),
           )

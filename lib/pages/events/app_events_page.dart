@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class AppEventsPage extends StatelessWidget {
   @override
@@ -13,7 +12,7 @@ class AppEventsPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: const [
                 Text('Events'),
-              ]),
-        ));
+              ],),
+        ),);
   }
 }

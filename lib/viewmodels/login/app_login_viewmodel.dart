@@ -1,6 +1,6 @@
+import 'package:flutter/material.dart';
 import 'package:whatsup/models/user/user_model.dart';
 import 'package:whatsup/service/firebase/auth/authentication_service.dart';
-import 'package:flutter/material.dart';
 
 enum AppLoginStatus {
   smsVerification,
@@ -9,23 +9,21 @@ enum AppLoginStatus {
 }
 
 class AppLoginViewModel extends ChangeNotifier {
-  AppLoginViewModel({@required AuthenicationService authenicationService}) {
+  AppLoginViewModel({required AuthenicationService authenicationService}) {
     _authenicationService = authenicationService;
     subscribeToUserChangesFromAuthenicationService();
   }
 
-  AuthenicationService _authenicationService;
+  late AuthenicationService _authenicationService;
 
-  UserModel currUser;
+  late UserModel? currUser;
 
-  AppLoginStatus loginStatus;
+  late AppLoginStatus loginStatus;
 
-  void subscribeToUserChangesFromAuthenicationService() {
-    final UserModel user = _authenicationService.getCurrentUser();
-    if (user != null) {
-      currUser = user;
-      loginStatus = AppLoginStatus.unauthenicated;
-    }
+  void subscribeToUserChangesFromAuthenicationService() async {
+    final UserModel? user = await _authenicationService.getCurrentUser();
+    currUser = user;
+    loginStatus = AppLoginStatus.unauthenicated;
     _authenicationService.userStateChanges().listen((userModel) {
       currUser = userModel;
       if (currUser != null) {
@@ -39,29 +37,26 @@ class AppLoginViewModel extends ChangeNotifier {
 
   Future<void> signInWithGoogle() async {
     final UserModel user = await _authenicationService.signInWithGoogle();
-    if (user != null) {
-      currUser = user;
-      loginStatus = AppLoginStatus.authenicated;
-      notifyListeners();
-    }
+    currUser = user;
+    loginStatus = AppLoginStatus.authenicated;
+    notifyListeners();
   }
 
   Future<void> signInWithFacebook() async {
     final UserModel user = await _authenicationService.signInWithFacebook();
-    if (user != null) {
-      currUser = user;
-      loginStatus = AppLoginStatus.authenicated;
-      notifyListeners();
-    }
+    currUser = user;
+    loginStatus = AppLoginStatus.authenicated;
+    notifyListeners();
   }
 
   Future<void> signInWithPhoneNumber(String phoneNumber) async {
     await _authenicationService.signInWithPhoneNumber(
-        phoneNumber: phoneNumber,
-        codeSentCallback: () {
-          loginStatus = AppLoginStatus.smsVerification;
-          notifyListeners();
-        });
+      phoneNumber: phoneNumber,
+      codeSentCallback: () {
+        loginStatus = AppLoginStatus.smsVerification;
+        notifyListeners();
+      },
+    );
   }
 
   Future<void> signOut() async {

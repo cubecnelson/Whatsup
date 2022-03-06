@@ -1,24 +1,22 @@
-import 'dart:ui';
 
-import 'package:whatsup/components/molecules/button/button.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:whatsup/components/atoms/neumor_container/neumor_container.dart';
+import 'package:whatsup/components/molecules/button/button.dart';
 import 'package:whatsup/components/molecules/textfield/textfield.dart';
 import 'package:whatsup/constants/colors/app_colors.dart';
 import 'package:whatsup/viewmodels/login/app_login_viewmodel.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:provider/provider.dart';
 
 // ignore: must_be_immutable
 class SmsVerificationPage extends StatelessWidget {
   List<String> smsCode = List.filled(6, '');
 
-  Widget buildSmsVerificationModule({@required BuildContext context}) {
+  Widget buildSmsVerificationModule({required BuildContext context}) {
     final AppLoginViewModel loginViewModel = Provider.of(context);
     return NeumorContainer(
         padding: const EdgeInsets.all(4.0),
         decoration: const BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(20))),
+            borderRadius: BorderRadius.all(Radius.circular(20)),),
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Row(
@@ -37,7 +35,7 @@ class SmsVerificationPage extends StatelessWidget {
                     onChange: (text) {
                       smsCode[0] = text;
                     },
-                    context: context),
+                    context: context,),
               ),
               Container(
                 margin: const EdgeInsets.all(4),
@@ -51,7 +49,7 @@ class SmsVerificationPage extends StatelessWidget {
                     onReachMaxLength: () {
                       FocusScope.of(context).nextFocus();
                     },
-                    context: context),
+                    context: context,),
               ),
               Container(
                 margin: const EdgeInsets.all(4),
@@ -65,7 +63,7 @@ class SmsVerificationPage extends StatelessWidget {
                     onReachMaxLength: () {
                       FocusScope.of(context).nextFocus();
                     },
-                    context: context),
+                    context: context,),
               ),
               Container(
                 margin: const EdgeInsets.all(4),
@@ -79,7 +77,7 @@ class SmsVerificationPage extends StatelessWidget {
                     onReachMaxLength: () {
                       FocusScope.of(context).nextFocus();
                     },
-                    context: context),
+                    context: context,),
               ),
               Container(
                 margin: const EdgeInsets.all(4),
@@ -93,7 +91,7 @@ class SmsVerificationPage extends StatelessWidget {
                     onReachMaxLength: () {
                       FocusScope.of(context).nextFocus();
                     },
-                    context: context),
+                    context: context,),
               ),
               Container(
                 margin: const EdgeInsets.all(4),
@@ -109,11 +107,11 @@ class SmsVerificationPage extends StatelessWidget {
                         loginViewModel.verifySmsCode(smsCode.join());
                       }
                     },
-                    context: context),
+                    context: context,),
               ),
             ],
           ),
-        ));
+        ),);
   }
 
   @override
@@ -138,6 +136,6 @@ class SmsVerificationPage extends StatelessWidget {
               ),
             ],
           ),
-        ));
+        ),);
   }
 }

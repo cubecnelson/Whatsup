@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class AppMessagesPage extends StatelessWidget {
   @override
@@ -13,7 +12,7 @@ class AppMessagesPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: const [
                 Text('Messages'),
-              ]),
-        ));
+              ],),
+        ),);
   }
 }

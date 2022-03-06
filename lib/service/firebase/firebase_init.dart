@@ -2,7 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 class FirebaseInit extends StatefulWidget {
-  const FirebaseInit({@required this.child});
+  const FirebaseInit({required this.child});
   final Widget child;
 
   @override
@@ -11,7 +11,7 @@ class FirebaseInit extends StatefulWidget {
 
 class _FirebaseInitState extends State<FirebaseInit> {
   bool _initialized = false;
-  String _error;
+  late String _error;
 
   Future<void> initializeFlutterFire() async {
     try {
@@ -34,9 +34,7 @@ class _FirebaseInitState extends State<FirebaseInit> {
 
   @override
   Widget build(BuildContext context) {
-    if (_error != null) {
-      return Center(child: Text(_error));
-    }
+    // return Center(child: Text(_error));
     if (!_initialized) {
       return const Center(child: CircularProgressIndicator());
     }

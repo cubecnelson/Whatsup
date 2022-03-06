@@ -1,7 +1,7 @@
 import 'package:location/location.dart';
 
 class LocationService {
-  LocationService({Location location}) : _location = location;
+  LocationService({required Location location}) : _location = location;
 
   LocationService._newInstance(this._location);
 
@@ -11,9 +11,9 @@ class LocationService {
   static LocationService get instance => _instance;
 
   final Location _location;
-  bool _serviceEnabled = false;
+  late bool _serviceEnabled = false;
   PermissionStatus permissionGranted = PermissionStatus.denied;
-  LocationData _locationData;
+  late LocationData _locationData;
 
   LocationData get lastLocationData {
     return _locationData;

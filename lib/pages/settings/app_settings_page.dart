@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:whatsup/components/molecules/button/button.dart';
 import 'package:whatsup/viewmodels/login/app_login_viewmodel.dart';
@@ -27,8 +26,8 @@ class AppSettingsPage extends StatelessWidget {
                           () async {
                         await loginViewModel.signOut();
                       });
-                    })
-              ]),
-        ));
+                    },)
+              ],),
+        ),);
   }
 }
